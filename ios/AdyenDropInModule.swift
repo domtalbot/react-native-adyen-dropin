@@ -366,7 +366,7 @@ extension AdyenDropInModule: DropInComponentDelegate {
         let headers = MemoryStorage.current.headers
         let queryParameters = MemoryStorage.current.queryParameters
         let path = MemoryStorage.current.makePaymentEndpoint
-        let request = PaymentsRequest(headers: headers, queryParameters: queryParameters, path: path, data: data)
+        let request = PaymentsRequest(headers: headers, queryParameters: queryParameters, path: path, data: newData)
         apiClient?.perform(request, completionHandler: paymentResponseHandler)
     }
 
