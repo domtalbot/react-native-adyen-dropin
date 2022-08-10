@@ -347,6 +347,8 @@ class AdyenDropInModule: NSObject {
 extension AdyenDropInModule: DropInComponentDelegate {
 
     internal func didSubmit(_ data: PaymentComponentData, for paymentMethod: PaymentMethod, from component: DropInComponent) {
+        let newData = data.replacingAmount(with: dropInConfiguration?.payment?.amount ?? Amount(value: 0, currencyCode: "GBP"))
+      
         if self.onSubmitCallback != nil {
             self.onSubmitCallback?([[
                 "paymentMethod": data.paymentMethod.encodable.dictionary as Any,
